@@ -14,7 +14,7 @@ public class ZipReader {
  		ArrayList<String> readZip = new ArrayList<String>();
  		ZipFile zipFile; 
 		try { 
-			zipFile = new ZipFile(path); 
+			zipFile = new ZipFile(path, "euc-kr"); 
  			Enumeration<? extends ZipArchiveEntry> entries = zipFile.getEntries(); 
  
  		    while(entries.hasMoreElements()){ 
@@ -24,7 +24,7 @@ public class ZipReader {
  		        ExcelReader myReader = new ExcelReader(); 
  		         
  		        for(String value:myReader.getData(stream)) { 
-// 		        	System.out.println(value); 
+ 		        	System.out.println(value); 
  		        	readZip.add(value);
  		        } 
  		    } 

@@ -37,10 +37,16 @@ public class ZipProject {
 			String resultPath = output;
 			
 			ArrayList<String> lines = ZipReader.readFileInZip(dataPath);
-//			ArrayList<String> linesToBeSaved2 = courseInformation(lines);
+			ArrayList<String> linesNew = excellNewline(lines);
 //			Utils.writeAFile(linesToBeSaved2, resultPath, 2);
 		}
 	}
+	
+	private ArrayList<String> excellNewline(ArrayList<String> lines){
+		return null;
+	}
+	
+	
 	
 	private boolean parseOptions(Options options, String[] args) {
 		CommandLineParser parser = new DefaultParser();
