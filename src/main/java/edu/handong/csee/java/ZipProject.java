@@ -8,7 +8,10 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import org.apache.poi.hssf.extractor.ExcelExtractor;
 
+import edu.handong.csee.java.datamodel.Summary;
+import edu.handong.csee.java.utils.ExcelReader;
 import edu.handong.csee.java.utils.SeveralExceptions;
 import edu.handong.csee.java.utils.ZipReader;
 
@@ -37,22 +40,15 @@ public class ZipProject {
 			String resultPath = output;
 			
 			ArrayList<String> lines = ZipReader.readFileInZip(dataPath);
-			ArrayList<String> linesNew = excellNewline(lines);
-//			Utils.writeAFile(linesToBeSaved2, resultPath, 2);
+			ExcelReader.writeAFile(lines, resultPath);
 		}
 	}
-	
-	private ArrayList<String> excellNewline(ArrayList<String> lines){
-		return null;
-	}
-	
 	
 	
 	private boolean parseOptions(Options options, String[] args) {
 		CommandLineParser parser = new DefaultParser();
 		try {
 			CommandLine cmd = parser.parse(options, args);
-
 			input = cmd.getOptionValue("i");
 			output = cmd.getOptionValue("o");
 			help = cmd.hasOption("h");

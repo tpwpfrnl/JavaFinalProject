@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Enumeration; 
 
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry; 
-import org.apache.commons.compress.archivers.zip.ZipFile; 
+import org.apache.commons.compress.archivers.zip.ZipFile;
+
+import edu.handong.csee.java.datamodel.Summary; 
 
 public class ZipReader { 
  	
@@ -33,6 +35,6 @@ public class ZipReader {
  			e.printStackTrace(); 
  		}
 		return readZip;
- 	} 
+ 	}
  } 
 
