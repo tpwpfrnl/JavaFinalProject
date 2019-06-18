@@ -21,7 +21,7 @@ public class ZipProject {
 	String output;
 	boolean help;
 	
-	public void run(String args[]) {
+	public void run(String args[]) throws SeveralExceptions {
 		Options options = createOptions();
 		if(parseOptions(options, args)) {
 			if(help) {
@@ -37,10 +37,12 @@ public class ZipProject {
 				System.exit(0);
 			}
 			String dataPath = input;
-			String resultPath = output;
+			String resultPath = output;			
 			
-			ArrayList<String> lines = ZipReader.readFileInZip(dataPath);
-			ExcelReader.writeAFile(lines, resultPath);
+			ArrayList<String> lines1 = ZipReader.readFileInZip1(dataPath);
+			ArrayList<String> lines2 = ZipReader.readFileInZip2(dataPath);
+			ExcelReader.writeAFile1(lines1, resultPath);
+			ExcelReader.writeAFile2(lines2, resultPath);
 		}
 	}
 	

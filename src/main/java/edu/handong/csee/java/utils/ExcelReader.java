@@ -31,6 +31,7 @@ public class ExcelReader {
 
 			XSSFWorkbook wb = new XSSFWorkbook(inp);
 			XSSFSheet sheet = wb.getSheetAt(0);
+			String linee = "";
 			
 			int rows = sheet.getPhysicalNumberOfRows();
 			for(int rowIndex = 1; rowIndex < rows; rowIndex++) {
@@ -54,8 +55,14 @@ public class ExcelReader {
 							val = cell.getNumericCellValue() + "";
 							break;
 						}
-						values.add(val);
+						if(val.contains(",")) {
+							val = val.replaceAll(",", " ");
+						}
+						linee += val + ",";
+						
 					}
+					values.add(linee);
+					linee = "";
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -69,11 +76,13 @@ public class ExcelReader {
 		return values;
 	}
 	
-	public static void writeAFile(ArrayList<String> lines, String targetFileName) {
+	public static void writeAFile1(ArrayList<String> lines, String targetFileName) {
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet sheet = wb.createSheet("자료수집양식");
 		XSSFRow row = sheet.createRow(0);
 		XSSFCell cell = row.createCell(0);
+		
+		targetFileName = targetFileName.replace(".csv", "1.csv");
 		
 		try {
 //			for(String line:lines) {
@@ -84,13 +93,14 @@ public class ExcelReader {
 //			outPutStream.close();
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-			bufWrite.newLine();
+
 			for(String line:lines) {
 				bufWrite.write(line);
 				bufWrite.newLine();
 			}
 			bufWrite.flush();
 			bufWrite.close();
+			wb.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,6 +108,29 @@ public class ExcelReader {
 		
 	}
 	
+	public static void writeAFile2(ArrayList<String> lines, String targetFileName) {
+		XSSFWorkbook wb = new XSSFWorkbook();
+		XSSFSheet sheet = wb.createSheet("자료수집양식");
+		XSSFRow row = sheet.createRow(0);
+		XSSFCell cell = row.createCell(0);
+		
+		targetFileName = targetFileName.replace(".csv", "2.csv");
+		
+		try {
+			File file = new File(targetFileName);
+			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
 
+			for(String line:lines) {
+				bufWrite.write(line);
+				bufWrite.newLine();
+			}
+			bufWrite.flush();
+			bufWrite.close();
+			wb.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
