@@ -33,16 +33,28 @@ public class ExcelReader {
 			XSSFSheet sheet = wb.getSheetAt(0);
 			
 			int rows = sheet.getPhysicalNumberOfRows();
-			for(int rowIndex = 0; rowIndex < rows; rowIndex++) {
+			for(int rowIndex = 1; rowIndex < rows; rowIndex++) {
 				XSSFRow row = sheet.getRow(rowIndex); //down
 				if(row != null) {
 					int cells = row.getPhysicalNumberOfCells();
 					for(int columnIndex = 0; columnIndex <= cells; columnIndex++) {
 						XSSFCell cell = row.getCell(columnIndex); //right
+						String val = "";
 						if (cell == null) {
 							cell = row.createCell(10);				
 						}
-						values.add(cell.getStringCellValue());
+						switch(cell.getCellType()) {
+						case ERROR:
+							val = cell.getErrorCellValue() + "";
+							break;
+						case STRING:
+							val = cell.getStringCellValue() + "";
+							break;
+						case NUMERIC:
+							val = cell.getNumericCellValue() + "";
+							break;
+						}
+						values.add(val);
 					}
 				}
 			}
@@ -72,7 +84,6 @@ public class ExcelReader {
 //			outPutStream.close();
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-//			bufWrite.write("제목,요약문 (300자 내외),핵심어 (keyword, 쉽표로 구분),조회날짜,실제자료조회 출처 (웹자료링크),원출처 (기관명 등),제작자 (Copyright 소유처)");
 			bufWrite.newLine();
 			for(String line:lines) {
 				bufWrite.write(line);
