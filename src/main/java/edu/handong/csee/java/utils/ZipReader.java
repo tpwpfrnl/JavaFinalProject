@@ -74,7 +74,7 @@ public class ZipReader {
 				while (entries.hasMoreElements()) {
 					ZipArchiveEntry entry = entries.nextElement();
 					InputStream stream = zipFile.getInputStream(entry);
-				
+					
 					ExcelReader myReader = new ExcelReader();
 				
 					for (String value : myReader.getData2(stream)) {
