@@ -47,7 +47,7 @@ public class ExcelReader {
 							break;
 						}
 						if(val.contains(",")) {
-							val = val.replaceAll(",", " ");
+							val = val.replaceAll(",", "·");
 						}
 						linee += val + ",";
 						
@@ -100,7 +100,7 @@ public class ExcelReader {
 							break;
 						}
 						if(val.contains(",")) {
-							val = val.replaceAll(",", " ");
+							val = val.replaceAll(",", "·");
 						}
 						linee += val + ",";
 						
@@ -138,7 +138,7 @@ public class ExcelReader {
 //			outPutStream.close();
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-			bufWrite.write(",제목,요약문 (300자 내외),핵심어(keyword 쉽표로 구분),조회날짜,실제자료조회,출처 (웹자료링크),원출처 (기관명 등),제작자(Copyright 소유처)");
+			bufWrite.write(",제목,요약문 (300자 내외),핵심어(keyword·쉽표로 구분),조회날짜,실제자료조회,출처 (웹자료링크),원출처 (기관명 등),제작자(Copyright 소유처)");
 			bufWrite.newLine();
 			for(String line:lines) {
 				bufWrite.write(line);
@@ -165,7 +165,7 @@ public class ExcelReader {
 		try {
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-			bufWrite.write(",제목(반드시 요약문 양식에 입력한 제목과 같아야 함.),표/그림 일련번호,자료유형(표 그림 …),자료에 나온 표나 그림 설명(캡션),자료가 나온 쪽번호");
+			bufWrite.write(",제목(반드시 요약문 양식에 입력한 제목과 같아야 함.),표/그림 일련번호,자료유형(표·그림 …),자료에 나온 표나 그림 설명(캡션),자료가 나온 쪽번호");
 			bufWrite.newLine();
 			for(String line:lines) {
 				bufWrite.write(line);
