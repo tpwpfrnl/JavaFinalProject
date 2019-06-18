@@ -52,6 +52,9 @@ public class ExcelReader {
 						linee += val + ",";
 						
 					}
+					if(linee.contains(",,,")) {
+						continue;
+					}
 					values.add(linee);
 					linee = "";
 				}
@@ -104,6 +107,9 @@ public class ExcelReader {
 						}
 						linee += val + ",";
 						
+					}
+					if(linee.contains(",,,")) {
+						continue;
 					}
 					values.add(linee);
 					linee = "";
