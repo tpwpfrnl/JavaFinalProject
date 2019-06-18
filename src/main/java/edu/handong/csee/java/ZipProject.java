@@ -8,9 +8,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import org.apache.poi.hssf.extractor.ExcelExtractor;
 
-import edu.handong.csee.java.datamodel.Summary;
 import edu.handong.csee.java.utils.ExcelReader;
 import edu.handong.csee.java.utils.SeveralExceptions;
 import edu.handong.csee.java.utils.ZipReader;
@@ -36,6 +34,7 @@ public class ZipProject {
 				System.out.println(e.getMessage());
 				System.exit(0);
 			}
+			
 			String dataPath = input;
 			String resultPath = output;			
 			

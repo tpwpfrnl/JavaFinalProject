@@ -9,78 +9,88 @@ import java.util.Enumeration;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipFile;
 
-import edu.handong.csee.java.datamodel.Summary;
-
 public class ZipReader {
 
 	public static ArrayList<String> readFileInZip1(String path) throws SeveralExceptions {
 		
-		File file = new File(path);
-		String name1 = file.getName();
-		name1 = name1.replace(".zip", "");
+		File dir = new File(path);
+		File[] list = dir.listFiles();
+		
 	
 		ArrayList<String> readZip1 = new ArrayList<String>();
 		ZipFile zipFile;
 		
-		try {
-			zipFile = new ZipFile(path, "euc-kr");
-			Enumeration<? extends ZipArchiveEntry> entries = zipFile.getEntries();
-
-			while (entries.hasMoreElements()) {
-				ZipArchiveEntry entry = entries.nextElement();
-				InputStream stream = zipFile.getInputStream(entry);
-
-				ExcelReader myReader = new ExcelReader();
-
-				for (String value : myReader.getData(stream)) {
-					value = name1 + "," + value;
-					System.out.println(value);
-					if (entry.getName().contains("요약문")) {
-						readZip1.add(value);
-					} else {
-						continue;
+		for(int i = 0; i < list.length; i++) {
+			try {
+				File file = list[i];
+				
+				String name1 = file.getName();
+				name1 = name1.replace(".zip", "");
+				zipFile = new ZipFile(file, "euc-kr");
+				Enumeration<? extends ZipArchiveEntry> entries = zipFile.getEntries();
+				
+				while (entries.hasMoreElements()) {
+					ZipArchiveEntry entry = entries.nextElement();
+					InputStream stream = zipFile.getInputStream(entry);
+					
+					ExcelReader myReader = new ExcelReader();
+					
+					for (String value : myReader.getData1(stream)) {
+						value = name1 + "," + value;
+//						System.out.println(value);
+						if (entry.getName().contains("요약문")) {
+							readZip1.add(value);
+						} else {
+							continue;
+						}
 					}
 				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return readZip1;
 	}
 	
 	public static ArrayList<String> readFileInZip2(String path) throws SeveralExceptions {
 		
-		File file = new File(path);
-		String name1 = file.getName();
-		name1 = name1.replace(".zip", "");
+		File dir = new File(path);
+		File[] list = dir.listFiles();
 		
 		ArrayList<String> readZip2 = new ArrayList<String>();
 		ZipFile zipFile;
-		try {
-			zipFile = new ZipFile(path, "euc-kr");
-			Enumeration<? extends ZipArchiveEntry> entries = zipFile.getEntries();
-
-			while (entries.hasMoreElements()) {
-				ZipArchiveEntry entry = entries.nextElement();
-				InputStream stream = zipFile.getInputStream(entry);
-
-				ExcelReader myReader = new ExcelReader();
-
-				for (String value : myReader.getData(stream)) {
-					value = name1 + "," + value;
-					System.out.println(value);
-					if (entry.getName().contains("표")) {
-						readZip2.add(value);
-					} else {
-						continue;
+		for(int i = 0; i < list.length; i++) {
+			try {
+				File file = list[i];
+				String name1 = file.getName();
+				name1 = name1.replace(".zip", "");
+				zipFile = new ZipFile(file, "euc-kr");
+				Enumeration<? extends ZipArchiveEntry> entries = zipFile.getEntries();
+			
+				while (entries.hasMoreElements()) {
+					ZipArchiveEntry entry = entries.nextElement();
+					InputStream stream = zipFile.getInputStream(entry);
+				
+					ExcelReader myReader = new ExcelReader();
+				
+					for (String value : myReader.getData2(stream)) {
+						value = name1 + "," + value;
+//						System.out.println(value);
+						if (entry.getName().contains("표")) {
+							readZip2.add(value);
+						} else {
+							continue;
+						}
 					}
 				}
+			
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		
 		return readZip2;
 	}
 }
