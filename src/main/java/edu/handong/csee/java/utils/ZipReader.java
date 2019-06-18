@@ -36,7 +36,7 @@ public class ZipReader {
 					ExcelReader myReader = new ExcelReader();
 					
 					for (String value : myReader.getData1(stream)) {
-						if (entry.getName().contains("��๮")) {
+						if (entry.getName().contains("요약문")) {
 							value = name1 + "," + value;
 							System.out.println(value);
 							readZip1.add(value);
@@ -78,7 +78,7 @@ public class ZipReader {
 					ExcelReader myReader = new ExcelReader();
 				
 					for (String value : myReader.getData2(stream)) {
-						if (entry.getName().contains("ǥ")) {
+						if (entry.getName().contains("표")) {
 							value = name1 + "," + value;
 							System.out.println(value);
 							readZip2.add(value);
