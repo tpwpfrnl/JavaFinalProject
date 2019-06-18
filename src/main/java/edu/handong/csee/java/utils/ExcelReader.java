@@ -129,7 +129,7 @@ public class ExcelReader {
 	
 	public static void writeAFile1(ArrayList<String> lines, String targetFileName) {
 		XSSFWorkbook wb = new XSSFWorkbook();
-		XSSFSheet sheet = wb.createSheet("ìë£Œìˆ˜ì§‘ì–‘ì‹");
+		XSSFSheet sheet = wb.createSheet("ÀÚ·á¼öÁı¾ç½Ä");
 		XSSFRow row = sheet.createRow(0);
 		XSSFCell cell = row.createCell(0);
 		
@@ -144,7 +144,7 @@ public class ExcelReader {
 //			outPutStream.close();
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-			bufWrite.write(",ì œëª©,ìš”ì•½ë¬¸ (300ì ë‚´ì™¸),í•µì‹¬ì–´(keywordÂ·ì‰½í‘œë¡œ êµ¬ë¶„),ì¡°íšŒë‚ ì§œ,ì‹¤ì œìë£Œì¡°íšŒ,ì¶œì²˜ (ì›¹ìë£Œë§í¬),ì›ì¶œì²˜ (ê¸°ê´€ëª… ë“±),ì œì‘ì(Copyright ì†Œìœ ì²˜)");
+			bufWrite.write(",Á¦¸ñ,¿ä¾à¹® (300ÀÚ ³»¿Ü),ÇÙ½É¾î(keyword¡¤½±Ç¥·Î ±¸ºĞ),Á¶È¸³¯Â¥,½ÇÁ¦ÀÚ·áÁ¶È¸,ÃâÃ³ (À¥ÀÚ·á¸µÅ©),¿øÃâÃ³ (±â°ü¸í µî),Á¦ÀÛÀÚ(Copyright ¼ÒÀ¯Ã³)");
 			bufWrite.newLine();
 			for(String line:lines) {
 				bufWrite.write(line);
@@ -161,7 +161,7 @@ public class ExcelReader {
 	
 	public static void writeAFile2(ArrayList<String> lines, String targetFileName) {
 		XSSFWorkbook wb = new XSSFWorkbook();
-		XSSFSheet sheet = wb.createSheet("ìë£Œìˆ˜ì§‘ì–‘ì‹");
+		XSSFSheet sheet = wb.createSheet("ÀÚ·á¼öÁı¾ç½Ä");
 		XSSFRow row = sheet.createRow(0);
 		XSSFCell cell = row.createCell(0);
 		
@@ -170,7 +170,7 @@ public class ExcelReader {
 		try {
 			File file = new File(targetFileName);
 			BufferedWriter bufWrite = new BufferedWriter(new FileWriter(file));
-			bufWrite.write(",ì œëª©(ë°˜ë“œì‹œ ìš”ì•½ë¬¸ ì–‘ì‹ì— ì…ë ¥í•œ ì œëª©ê³¼ ê°™ì•„ì•¼ í•¨.),í‘œ/ê·¸ë¦¼ ì¼ë ¨ë²ˆí˜¸,ìë£Œìœ í˜•(í‘œÂ·ê·¸ë¦¼ â€¦),ìë£Œì— ë‚˜ì˜¨ í‘œë‚˜ ê·¸ë¦¼ ì„¤ëª…(ìº¡ì…˜),ìë£Œê°€ ë‚˜ì˜¨ ìª½ë²ˆí˜¸");
+			bufWrite.write(",Á¦¸ñ(¹İµå½Ã ¿ä¾à¹® ¾ç½Ä¿¡ ÀÔ·ÂÇÑ Á¦¸ñ°ú °°¾Æ¾ß ÇÔ.),Ç¥/±×¸² ÀÏ·Ã¹øÈ£,ÀÚ·áÀ¯Çü(Ç¥¡¤±×¸² ¡¦),ÀÚ·á¿¡ ³ª¿Â Ç¥³ª ±×¸² ¼³¸í(Ä¸¼Ç),ÀÚ·á°¡ ³ª¿Â ÂÊ¹øÈ£");
 			bufWrite.newLine();
 			for(String line:lines) {
 				bufWrite.write(line);
