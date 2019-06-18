@@ -36,7 +36,7 @@ public class ZipReader {
 					ExcelReader myReader = new ExcelReader();
 					
 					for (String value : myReader.getData1(stream)) {
-						if (entry.getName().contains("��๮")) {
+						if (entry.getName().contains("¿ä¾à¹®")) {
 							value = name1 + "," + value;
 //							System.out.println(value);
 							readZip1.add(value);
@@ -45,6 +45,7 @@ public class ZipReader {
 						}
 					}
 				}
+				zipFile.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +76,7 @@ public class ZipReader {
 					ExcelReader myReader = new ExcelReader();
 				
 					for (String value : myReader.getData2(stream)) {
-						if (entry.getName().contains("ǥ")) {
+						if (entry.getName().contains("Ç¥")) {
 							value = name1 + "," + value;
 //							System.out.println(value);
 							readZip2.add(value);
@@ -84,7 +85,7 @@ public class ZipReader {
 						}
 					}
 				}
-			
+				zipFile.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
