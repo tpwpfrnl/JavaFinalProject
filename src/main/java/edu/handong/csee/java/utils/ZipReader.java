@@ -61,9 +61,11 @@ public class ZipReader {
 		
 		ArrayList<String> readZip2 = new ArrayList<String>();
 		ZipFile zipFile;
+		
 		for(int i = 0; i < list.length; i++) {
 			try {
 				File file = list[i];
+				
 				String name1 = file.getName();
 				name1 = name1.replace(".zip", "");
 				zipFile = new ZipFile(file, "euc-kr");
@@ -91,7 +93,6 @@ public class ZipReader {
 				e.printStackTrace();
 			}
 		}
-		
 		return readZip2;
 	}
 }
