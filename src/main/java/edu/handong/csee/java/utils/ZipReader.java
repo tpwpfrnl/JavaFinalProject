@@ -19,7 +19,7 @@ public class ZipReader {
 	
 		ArrayList<String> readZip1 = new ArrayList<String>();
 		ZipFile zipFile;
-		
+
 		for(int i = 0; i < list.length; i++) {
 			try {
 				File file = list[i];
@@ -45,6 +45,7 @@ public class ZipReader {
 						}
 					}
 				}
+				zipFile.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,7 +85,7 @@ public class ZipReader {
 						}
 					}
 				}
-			
+				zipFile.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
